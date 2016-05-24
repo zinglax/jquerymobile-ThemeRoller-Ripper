@@ -7,52 +7,52 @@ theme =
      },
 "a":{
      "page":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"
+          "TC":"#e6e6e6",
+          "TS":"#cccccc",
+          "BG":"#808080",
+          "BRD":"#4d4d4d"
      },
      "header_footer_bar":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"     
+          "TC":"#000000",
+          "TS":"#c1272d",
+          "BG":"#ed1c24",
+          "BRD":"#f7931e"     
      },
      "body":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"     
+          "TC":"#ffcc33",
+          "TS":"#fcee21",
+          "BG":"#d9e021",
+          "BRD":"#8cc63f"     
      },
      "link":{
-          "color":"#",
-          "hover":"#",
-          "active":"#",
-          "visited":"#"
+          "color":"#009245",
+          "hover":"#006837",
+          "active":"#00a99d",
+          "visited":"#33cccc"
      },
      "bt_hover":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"
+          "TC":"#662991",
+          "TS":"#93278f",
+          "BG":"#4d145a",
+          "BRD":"#ed1e79"
      },
      "bt_normal":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"     
+          "TC":"#33ccff",
+          "TS":"#29abe2",
+          "BG":"#0071bc",
+          "BRD":"#2e3192"     
      },
      "bt_pressed":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"  
+          "TC":"#c7b299",
+          "TS":"#736357",
+          "BG":"#c69c6d",
+          "BRD":"#8c6239"  
      },
      "active_state":{
-          "TC":"#",
-          "TS":"#",
-          "BG":"#",
-          "BRD":"#"     
+          "TC":"#603813",
+          "TS":"#005599",
+          "BG":"#3388cc",
+          "BRD":"#50d750"     
      }
      }
 
