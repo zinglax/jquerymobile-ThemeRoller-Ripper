@@ -1,0 +1,59 @@
+theme = 
+{
+
+"name":"colorgen",
+"global":{
+     "disk_color":"#ffffff","box_shadow":"#f2f2f2"
+     },
+"a":{
+     "page":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"
+     },
+     "header_footer_bar":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"     
+     },
+     "body":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"     
+     },
+     "link":{
+          "color":"#",
+          "hover":"#",
+          "active":"#",
+          "visited":"#"
+     },
+     "bt_hover":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"
+     },
+     "bt_normal":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"     
+     },
+     "bt_pressed":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"  
+     },
+     "active_state":{
+          "TC":"#",
+          "TS":"#",
+          "BG":"#",
+          "BRD":"#"     
+     }
+     }
+
+}
