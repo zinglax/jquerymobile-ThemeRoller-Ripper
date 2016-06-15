@@ -1,7 +1,6 @@
 import json, os, shutil
-from pprint import pprint
 import jinja2
-from pprint import pprint as p
+from pprint import pprint as pretty
 
 # GLOBALS
 working_dir = working_directory = os.path.dirname(os.path.realpath(__file__))
@@ -10,12 +9,18 @@ colorgen_theme_dir = os.path.join(working_directory, "colorgen-Theme")
 colorgen_json = os.path.join(json_dir, 'the_colorgen_theme.json')
 temp_theme_dir = os.path.join(colorgen_theme_dir, '.temp')
 
+class Jinjenv(jinja2.Environment):
+    ''' Jinja2 Environment Override '''
+    def __init__(self, **kwargs):
+        jinja2.Environment.__init__(self, **kwargs)
+        print self.variable_start_string + " Test " + self.variable_end_string
+
 def get_jinja_fields_and_colors(json_file=colorgen_json ):
     ''' Gets all fields from a theme json file for the A swatch'''
     # Reading in theme json data 
     with open(json_file) as data_file:    
         jqmt_rip = json.load(data_file)
-        p(jqmt_rip) # Print out of json
+        pretty(jqmt_rip) # Print out of json
         
         field_colors = {} # Dictionary of unique colors and names
         for k,v in jqmt_rip['themes'][0]['global'].iteritems():
@@ -49,14 +54,47 @@ def color_replace(input_dir, output_dir=temp_theme_dir):
 
     # Gets css files in the output directory
     css_files = get_css_file_dict(output_dir)
-    
+
     for tag,color in get_jinja_fields_and_colors().iteritems():
-        print tag
-        print color
+        #pretty((tag, color))
         for k,v in css_files.iteritems():
-            print k
-            print v
+            #pretty((k,v))            
             css_color_replace(color, "{{ "+ tag + " }}", v, k)
+            css_color_replace_jinja(color, "{{ "+ tag + " }}", v, k)
+
+
+def css_color_replace_jinja(color, tag, css_filepath, css_filename):
+    
+    print color
+    print tag    
+
+    # TEMP FILE
+    new_filename = "temp-" + css_filename        
+    new_filename_path = css_filepath.replace(css_filename, new_filename)    
+
+    # CSS THEME TEMPLATES
+    templates_directory = os.path.join(working_directory, "templates")
+
+    templateLoader = jinja2.FileSystemLoader(searchpath=templates_directory)
+    # Jinja Environment (can be used for "Custom Tests" for checking
+    # template variables)
+    templateEnv = Jinjenv(loader=templateLoader, variable_start_string=color[:3], 
+                          variable_end_string=color[4:])        
+
+    # FILTERS (Add them here)
+    # templateEnv.filters['template_os_path_join'] = template_os_path_join
+
+
+
+    with open(new_filename_path, "wb") as fh:
+        
+        renderedoutput = templateEnv.get_template("orig-colorgen.css.jinja").render(
+            {color[3]:tag})
+        fh.write(renderedoutput)
+        
+        
+        pretty(renderedoutput)
+            
            
 def css_color_replace(color, tag, css_filepath, css_filename):
     new_filename = "temp-" + css_filename        
@@ -76,7 +114,7 @@ def css_color_replace(color, tag, css_filepath, css_filename):
        
 
 if __name__ == "__main__":
-    #p(get_jinja_fields_and_colors())
-    #p(get_css_file_dict())
+    #pretty(get_jinja_fields_and_colors())
+    #pretty(get_css_file_dict())
     
     color_replace(colorgen_theme_dir, temp_theme_dir)
