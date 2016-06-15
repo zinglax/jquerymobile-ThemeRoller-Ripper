@@ -1,6 +1,6 @@
 # jquerymobile-ThemeRoller-Ripper
 
-
+GOT THE RIPPER IN
 
 
 
